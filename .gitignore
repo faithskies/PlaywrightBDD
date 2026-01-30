@@ -1,4 +1,4 @@
 # Playwright & Pytest caches can be ignored
 /node_modules/
-/tests/features/pages/__pycache__/
-/tests/features/pages/behave-report.html
+/features/pages/__pycache__/
+/reports/
