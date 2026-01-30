@@ -9,14 +9,13 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
+    
+    - uses: actions/checkout@v3
+    
     - name: Set up Python
       uses: actions/setup-python@v4
       with: 
-        python-version: '3.13.7'
+        python-version: 3.13.7
         
     - name: Install dependencies
       run: |
