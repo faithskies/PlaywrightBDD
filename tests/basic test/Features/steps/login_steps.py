@@ -6,10 +6,11 @@ from behave.api.async_step import async_run_until_complete
 
 @given ('I navigate to login page')
 def step_open_login_page(context): 
-    # playwright = sync_playwright().start()
-    # browser = playwright.chromium.launch(headless=False)
-    # context.browser = browser 
-    # context.page = browser.new_page()
+    #note adding the playwright here means that different scenarios cant run properly.
+    playwright = sync_playwright().start()
+    browser = playwright.chromium.launch(headless=False)
+    context.browser = browser 
+    context.page = browser.new_page()
     context.page.goto("http://uitestingplayground.com/sampleapp")
 
 @when ('I enter a VALID username and a VALID password')

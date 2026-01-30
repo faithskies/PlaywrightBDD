@@ -26,7 +26,6 @@ async def step_enter_invalid_credentials(context, username:str, password:str):
 @when ('I click on the login button')
 @async_run_until_complete
 async def step_press_login(context):
-    # context.page.click("#login")
     login_page = LoginPage(context.page)
     await login_page.submit_login()
 
@@ -45,6 +44,3 @@ async def step_verify_button_text(context, text:str):
     
     resultFound = await login_page.verify_buttonstatus(text)
     assert resultFound, f"Expected Button to show '{text}'"
-    
-    # button_text = login_page.submit.text_content().strip()
-    # assert text in button_text
