@@ -1,45 +1,42 @@
-name: Playwright Tests
+name: Playwright Behave Tests
+
 on:
   push:
     branches: [ main, master, testbranch ]
   pull_request:
     branches: [ main, master, testbranch ]
+
 jobs:
-  Playwright_Behave:
-    timeout-minutes: 30
+  playwright_behave:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
-    
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with: 
-        python-version: 3.13.7
-        
-    - name: Install dependencies
-      run: |
-       pip install --upgrade pip
-       pip install -r requirements.txt
-       pip install playwright
-       playwright install
-       pip install behave
-       npm install -D @cucumber/cucumber@latest
-       npm i -D @cucumber/cucumber@latest
-       pip install behave-html-formatter
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Run Behave
-      run: behave -f html -o reports/test_report.html
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-    - name: Upload Behave HTML Report artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: behave-html-report
-        path: reports/test_report.html
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install playwright behave behave-html-formatter
 
+      - name: Install Playwright browsers
+        run: playwright install --with-deps
 
+      - name: Run Behave tests
+        run: |
+          mkdir -p reports
+          behave -f html -o reports/test_report.html
 
-
-
-
- 
+      - name: Upload Behave HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: behave-html-report
+          path: reports/test_report.html
