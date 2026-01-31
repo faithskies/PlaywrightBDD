@@ -6,12 +6,13 @@
         # element Receives Events, as in not obscured by other elements
         # element is Enabled
 
-
 Feature: Verify Animation Page
 
-  Scenario: Verify that we can start the moving button animation and then click on it as it moves
+  Background:
     Given I navigate to page with the moving button
-    When I click Start Animation  
+
+  Scenario: Verify that we can start the moving button animation and then click on it as it moves
+    Given I click Start Animation  
     When I wait for the button to stop moving and then click it
     Then I should verify that the button was pressed
 

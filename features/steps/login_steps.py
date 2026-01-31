@@ -11,13 +11,13 @@ async def step_open_login_page(context):
     login_page = LoginPage(context.page)
     await login_page.navigate()
 
-@when ('I enter VALID username: "{username}" and VALID password: "{password}"')
+@given ('I enter VALID username: "{username}" and password: "{password}"')
 @async_run_until_complete
 async def step_enter_valid_credentials(context, username:str, password:str):
     login_page = LoginPage(context.page)
     await login_page.fill_form_field(username, password)
     
-@when ('I enter VALID username "{username}" and INVALID password "{password}"')
+@given ('I enter INVALID username "{username}" and password "{password}"')
 @async_run_until_complete
 async def step_enter_invalid_credentials(context, username:str, password:str):
     login_page = LoginPage(context.page)

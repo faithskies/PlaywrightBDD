@@ -12,7 +12,7 @@ async def step_open_login_page(context):
     await animation_page.navigate()
 
 
-@when ('I click Start Animation')
+@given ('I click Start Animation')
 @async_run_until_complete
 async def step_press_login(context):
     animation_page = AnimationPage(context.page)
