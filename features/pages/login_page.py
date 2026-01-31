@@ -15,17 +15,23 @@ class LoginPage(BasePage):
     async def submit_login(self):
         await self.submit.click()    
         
+    # fills the username and password fields with specified example texts    
     async def fill_form_field(self, username, password):
-        await self.username_field.fill(username)
-        await self.password_field.fill (password)
-        
+        #checks for if the username or password is 'empty' then it skips filling the field.  
+        if username != 'empty':
+            await self.username_field.fill(username)
+        if password != 'empty':
+            await self.password_field.fill (password)
+    
+    # checks if the expected text exists within the loginstatus feild   
     async def verify_loginstatus(self, temptext):  
         actual_text = await self.loginstatus.inner_text()
         if temptext in actual_text:
             return True
         else:
             return False
-        
+    
+    #checks to see the text of the login button    
     async def verify_buttonstatus(self, temptext):  
         actual_text = await self.submit.inner_text()
         if temptext in actual_text:
