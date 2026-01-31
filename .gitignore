@@ -1,5 +1,4 @@
 # Playwright & Pytest caches can be ignored
-/playwright/.cache/
-/tests_python_pytest/__pycache__/
-/tests_python_pytest/.pytest_cache/
-/tests_python_pytest/uitestingplaygroup/pytest.ini
+/node_modules/
+/features/pages/__pycache__/
+/reports/
