@@ -23,3 +23,7 @@ Given-when-then acceptance criteria is a type of syntax that is meant to define 
 - And : combine multiple steps of the same type (Given, When, or Then) for better readability and structure within a scenario. 
       - Example -  Given: I have a cart  / And: The cart is empty / And: There is a product called "Prosecco Armani DOC" with a price of $20
       - Example - Then: The operation should be successful   / And: The cart should have been correctly updated / And: A confirmation message should be displayed
+
+Python notes: 
+
+print("percent is", percent, "current_purcent is", current_purcent)
